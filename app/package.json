@@ -1,0 +1,22 @@
+{
+  "name": "Logophile",
+  "productName": "Logophile",
+  "identifier": "com.bhanu.logophile",
+  "description": "Logophile is reader that works to improve your vocublary",
+  "version": "0.0.1",
+  "author": "Bhanu Pratap Chaudhary",
+  "copyright": "©2016, jutja",
+  "main": "background.js",
+  "dependencies": {
+    "fs-jetpack": "^0.7.0",
+    "leveldown": "^1.4.4",
+    "linvodb3": "^3.13.0",
+    "nedb": "^1.7.4",
+    "node-ensure": "0.0.0",
+    "pouchdb": "^5.2.1",
+    "requirejs": "^2.1.22",
+    "sql.js": "^0.2.21",
+    "treo": "^0.5.1",
+    "worker-pouch": "^1.0.1"
+  }
+}
