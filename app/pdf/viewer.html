@@ -24,7 +24,7 @@ See https://github.com/adobe-type-tools/cmap-resources
     <!--#if GENERIC-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!--#endif-->
-    <title>PDF.js viewer</title>
+    <title>Logophile</title>
     <!--#if FIREFOX || MOZCENTRAL-->
     <!--#include viewer-snippet-firefox-extension.html-->
     <!--#endif-->
@@ -42,6 +42,7 @@ See https://github.com/adobe-type-tools/cmap-resources
     <!--#if !PRODUCTION-->
     <script src="../external/webL10n/l10n.js"></script>
     <script src="../node_modules/treo/lib/index.js"></script>
+    <script src="../vendor/bootstrap/barn.min.js"></script>
     <!--#endif-->
     <script type="text/javascript">
     if (window.require) {
@@ -404,7 +405,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                 
                 </script>
                 <script src="../vendor/bootstrap/jh-modal.js"></script>
-                <script src="../vendor/bootstrap/barn.min.js"></script>
+             
                 <script type="text/javascript">
                 var barn = new Barn(localStorage);
                 var myContent = document.getElementById('content');
