@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="js/pdf.js"></script>
+    <script type="text/javascript" src="js/textlayerbuilder.js"></script>
+        <script src="../vendor/bootstrap/barn.min.js"></script>
+    <script type="text/javascript">
+    if (window.require) {
+    window.nodeRequire = window.require;
+    delete window.require;
+    }
+    const remote = nodeRequire('electron').remote;
+    const Menu = remote.Menu;
+    const MenuItem = remote.MenuItem;
+    var menu = new Menu();
+    menu.append(new MenuItem({ label: 'GetMeaning', click: function() { getMeaning(); } }));
+    window.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    menu.popup(remote.getCurrentWindow());
+    }, false);
+    var getMeaning = function(){
+    var text = window.getSelection().toString();
+    if (text === "") {
+    alert('select a text first');
+    }else {
+    myWorker.postMessage({task: 'meaning', word: text});
+    }
+    }
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+  </head>
+  <body>
+    <div id="pdfContainer" class = "pdf-content">
+    </div>
+    <div id="content" style="display: none;">
+      <h1>Dictionary powered By Wikitionary</h1>
+      <p id="modalword"></p>
+    </div>
+    <script type="text/javascript">
+    var myWorker = new Worker("../dict/worker.js");
+    var words = "";
+    myWorker.addEventListener('message', function(e) {
+    if (e.data.task == "meaning") {
+    words = e.data.results;
+    var str = '<table border="1"><tr><th>Word</th><th>Type</th><th>Meaning</th></tr>';
+    for (var i = words.length - 1; i >= 0; i--) {
+    str += '<tr><td>'+words[i].word+'</td><td>'+words[i].type+'</td><td>'+words[i].meaning+'</td></tr>';
+    };
+  str += '</table>';
+  document.getElementById('modalword').innerHTML = str;
+  myModal.open();
+  // var pdfprint = PDFViewerApplication.documentFingerprint;
+  // barn.lpush(pdfprint, words[0].word );
+  };
+  }, false);
+  myWorker.postMessage({task: 'start'}); // Send data to our worker.
+  
+  </script>
+  <script src="../vendor/bootstrap/jh-modal.js"></script>
+  
+  <script type="text/javascript">
+  var barn = new Barn(localStorage);
+  var myContent = document.getElementById('content');
+  var myModal = new Modal({
+  content: myContent,
+  className: 'zoom-and-spin',
+  });
+  </script>
+  <link rel="stylesheet" href="../vendor/bootstrap/jh-modal.css"/>
+</body>
+<script type="text/javascript" src="js/main.js"></script>
+</html>

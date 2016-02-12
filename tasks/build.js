@@ -20,6 +20,7 @@ var paths = {
         './vendor/**',
         './pdf/**',
         './dict/**',
+        './source/**',
         './external/**',
         './**/*.html',
         './**/*.+(jpg|png|svg)'
