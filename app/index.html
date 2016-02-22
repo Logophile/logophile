@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="bower_components/metro-dist/css/metro.min.css">
+    <link rel="stylesheet" href="bower_components/metro-dist/css/metro-icons.min.css">
+    <link rel="stylesheet" href="bower_components/metro-dist/css/metro-responsive.min.css">
+    <link rel="stylesheet" href="bower_components/metro-dist/css/metro-schemes.min.css">
+    <link rel="stylesheet" href="css/overlay.css">
+    <title>Logophile</title>
+  </head>
+  <body>
+    <div class="app-bar darcula" data-role="appbar">
+      <a class="app-bar-element">
+        <span id="toggle-tiles-dropdown2" class="mif-apps mif-2x"></span>
+        <div class="app-bar-drop-container" data-role="dropdown" data-toggle-element="#toggle-tiles-dropdown2" data-no-close="false" style="width: 324px;">
+          <div class="tile-container bg-white">
+            <div class="tile-small bg-black">
+              
+              <div class="tile-content iconic">
+                <span class="icon  mif-folder-open" onclick="openFile()"></span>
+              </div>
+            </div>
+            <div class="tile-small bg-black">
+              <div class="tile-content iconic">
+                <span class="icon mif-first"></span>
+              </div>
+            </div>
+            <div class="tile-small bg-black">
+              <div class="tile-content iconic">
+                <span class="icon mif-last"></span>
+              </div>
+            </div>
+            <div class="tile-small bg-black">
+              <div class="tile-content iconic">
+                <span class="icon mif-help"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <div class="app-bar-divider"></div>
+      <ul class="app-bar-menu">
+        <li data-flexorderorigin="0" data-flexorder="1"><a onclick="handleLibrary()">Library</a></li>
+        <li data-flexorderorigin="1" data-flexorder="2">
+          <a href="" class="dropdown-toggle">Recent Books</a>
+          <ul class="d-menu" data-role="dropdown">
+            <li><a onclick="openRecent('1')">The Powerhouse: Inside ..</a></li>
+            <li><a onclick="openRecent('2')">Superforecasting: The ..</a></li>
+            <li><a onclick="openRecent('3')">The Road to Character</a></li>
+            <li><a onclick="openRecent('4')">The Lost Art of Finding Our Way</a></li>
+          </ul>
+        </li>
+        <div class="app-bar-element">
+          <span class="dropdown-toggle">Goto</span>
+          <ul class="d-menu" data-role="dropdown" style="display: none;">
+            <li><a onclick="gotoBookmark('1')">Cover</a></li>
+            <li><a onclick="gotoBookmark('1')">Table of Contents</a></li>
+            <li><a onclick="gotoBookmark('1')">beginning</a></li>
+            <li><a onclick="gotoBookmark('1')">Location Ctrl+G</a></li>
+          </ul>
+        </div>
+        <div class="app-bar-divider"></div>
+        <li data-flexorderorigin="2" data-flexorder="3"><a onclick="handleFonts('1')">Aa</a></li>
+        <div class="app-bar-divider"></div>
+        <li data-flexorderorigin="3" data-flexorder="4"><a onclick="handleFullscreen('1')"><span class="icon  mif-enlarge2"></span></a></li>
+        <div class="app-bar-divider"></div>
+      </ul>
+      <!-- <div class="app-bar-element place-right">
+        <a class="dropdown-toggle fg-white"><span class="mif-user"></span> User Account</a>
+        <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true">
+          <div class="padding20">
+            <form>
+              <h4 class="text-light">Login to service...</h4>
+              <div class="input-control text">
+                <span class="mif-user prepend-icon"></span>
+                <input type="text">
+              </div>
+              <div class="input-control text">
+                <span class="mif-lock prepend-icon"></span>
+                <input type="password">
+              </div>
+              <label class="input-control checkbox small-check">
+                <input type="checkbox">
+                <span class="check"></span>
+                <span class="caption">Remember me</span>
+              </label>
+              <div class="form-actions">
+                <button class="button">Login</button>
+                <button class="button link">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> -->
+      <div class="app-bar-divider place-right"></div>
+      <div class="app-bar-pullbutton automatic" style="display: none;"></div>
+      <div class="clearfix" style="width: 0;"></div>
+      <nav class="app-bar-pullmenu hidden flexstyle-app-bar-menu" style="display: none;">
+      <ul class="app-bar-pullmenubar hidden app-bar-menu"></ul>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="cell colspan12 ">
+    </div>
+  </div>
+  <div class="flex-grid demo-grid">
+    <div class="row">
+      <div class="cell size2"></div>
+      <div class="cell size8">
+        <div id="pdfContainer">
+        </div>
+      </div>
+      <div class="cell size2"></div>
+    </div>
+  </div>
+  <div data-role="charm" data-position="bottom" id="bottomCharm">
+    <div class="flex-grid demo-grid">
+      <div class="row">
+        <div class="cell size4"></div>
+        <div class="cell size4">
+          <div class="app-bar darcula">
+            <ul class="app-bar-menu">
+              <li><a onclick="changePage('back')">Back</a></li>
+              <span class="app-bar-divider"></span>
+              <li><a onclick="changePage('next')">Next</a></li>
+              <span class="app-bar-divider"></span>
+              <li><a onclick="changePage('next')">Zoom +</a></li>
+              <span class="app-bar-divider"></span>
+              <li><a onclick="changePage('next')">Zoom -</a></li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="cell size4"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="js/pdf.js"></script>
+<script>
+// Specify the main script used to create a new PDF.JS web worker.
+// In production, change this to point to the combined `pdf.js` file.
+</script>
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/overlay.js"></script>
+<script src="js/main.js"></script>
+<script src="bower_components/metro-dist/js/metro.min.js"></script>
+</html>
+</html>

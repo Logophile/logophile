@@ -9,3 +9,4 @@ Thumbs.db
 /tmp/
 /node_modules/
 /app/node_modules/
+/app/bower_components/

@@ -19,8 +19,12 @@ var paths = {
         './node_modules/**',
         './vendor/**',
         './pdf/**',
+        './bower_components/**',
+        './css/**',
+        './js/**',
         './dict/**',
         './source/**',
+        './welcome.pdf',
         './external/**',
         './**/*.html',
         './**/*.+(jpg|png|svg)'
