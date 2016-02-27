@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="css/bootstrap.css" rel="stylesheet" />
+		<link href="css/rotating-card.css" rel="stylesheet" />
+		<title></title>
+	</head>
+	<body>
+		<script id="entry-template" type="text/x-handlebars-template">
+		<div class="col-md-4"><div class="card-container manual-flip">
+                <div class="card">
+                    <div class="front">
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">{{word}}</h3>
+                                <p class="profession">{{count}}</p>
+                                <p class="profession">Hear Pronunciation</p>
+                            </div>
+                            <div class="footer">
+                                <button class="btn btn-simple" onclick="rotateCard(this. "{{word}}")">
+                                    <i class="fa fa-mail-forward"></i> See the Meaning
+                                </button>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                        <div class="content">
+                            <div class="main" id="{{word}}">
+                               
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button data-original-title="Flip Card" class="btn btn-simple" rel="tooltip" title="" onclick="rotateCard(this)">
+                                <i class="fa fa-reply"></i> Back
+                            </button>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div>
+						</div>
+						</script>
+					<div class="row" id="cards">
+					</div>
+						
+					</body>
+					<script src="js/jquery-2.1.3.min.js"></script>
+					<script src="js/handlebars-v4.0.5.js"></script>
+					<script type="text/javascript">
+						var source   = $("#entry-template").html();
+						var template = Handlebars.compile(source);
+
+						var context = {word: "My New Post", count: "This is my first post!"};
+						var html    = template(context);
+						var e = document.createElement('div');
+						var element = document.getElementById('cards');
+						e.innerHTML = html;
+
+						while(e.firstChild) {
+						    element.appendChild(e.firstChild);
+						}
+					    function rotateCard(btn){
+					        var $card = $(btn).closest('.card-container');
+					        console.log($card);
+					        if($card.hasClass('hover')){
+					            $card.removeClass('hover');
+					        } else {
+					            $card.addClass('hover');
+					        }
+					    }
+					</script>
+				</html>

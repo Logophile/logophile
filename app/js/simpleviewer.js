@@ -17,7 +17,17 @@
 
 if (!PDFJS.PDFViewer || !PDFJS.getDocument) {
   alert('Please build the library and components using\n' +
-        '  `node make generic components`');
+    '  `node make generic components`');
+}
+
+
+var loadPDF = function(url) {
+  PDFJS.getDocument(url).then(function(pdfDocument) {
+    PDFJS.currentFingerPrint = pdfDocument.fingerprint;
+    PDFJS.pdfName = url;
+    pdfViewer.setDocument(pdfDocument);
+    pdfLinkService.setDocument(pdfDocument, null);
+  });
 }
 
 // The workerSrc property shall be specified.
@@ -42,16 +52,10 @@ var pdfViewer = new PDFJS.PDFViewer({
 });
 pdfLinkService.setViewer(pdfViewer);
 
-container.addEventListener('pagesinit', function () {
+container.addEventListener('pagesinit', function() {
   // We can use pdfViewer now, e.g. let's change default scale.
   pdfViewer.currentScaleValue = 'page-width';
 });
 
 // Loading document.
-PDFJS.getDocument(DEFAULT_URL).then(function (pdfDocument) {
-  // Document loaded, specifying document for the viewer and
-  // the (optional) linkService.
-  pdfViewer.setDocument(pdfDocument);
-
-  pdfLinkService.setDocument(pdfDocument, null);
-});
+loadPDF(DEFAULT_URL);
