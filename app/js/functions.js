@@ -113,13 +113,14 @@ $(function() {
 
 var updateWord = function(word) {
 	var fingerprint = PDFJS.currentFingerPrint;
-	var document = localStorage.getItem(fingerprint) || '{}';
-	document = JSON.parse(document);
-	document.fileName = PDFJS.pdfName;
-	if (document.hasOwnProperty(word)) {
-		document[word] += 1;
+	var doc = localStorage.getItem(fingerprint) || '{}';
+	doc = JSON.parse(doc);
+	doc.fileName = PDFJS.pdfName;
+	doc.words = doc.words || {}; 
+	if (doc.words.hasOwnProperty(word)) {
+		doc.words[word] += 1;
 	} else {
-		document[word] = 1;
+		doc.words[word] = 1;
 	}
-	localStorage.setItem(fingerprint,JSON.stringify(document));
+	localStorage.setItem(fingerprint,JSON.stringify(doc));
 }
