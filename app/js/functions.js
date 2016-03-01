@@ -19,20 +19,43 @@ function openRecent() {
 
 }
 
-function gotoBookmark() {
-
-}
 
 function handleFonts() {
 
 }
 
 function handleFullscreen() {
-
+	if (document.webkitIsFullScreen) {
+		document.webkitExitFullscreen();
+	} else {
+		var el = document.documentElement,
+			rfs = el.requestFullScreen || el.webkitRequestFullScreen;
+		rfs.call(el);
+	}
 }
 
-function changePage() {
+function changePage(inc) {
+	if (inc == "next") {
+		$('html body').animate({
+			scrollTop: window.scrollY + $(window).height()
+		}, 200);
+	} else if (inc == "back") {
+		$('html body').animate({
+			scrollTop: window.scrollY + $(window).height()
+		}, 200);
+	} else if(typeof inc === "number") {
+		pdfViewer.currentPageNumber = inc;
+	} else if(inc == "end"){
+		pdfViewer.currentPageNumber =pdfViewer.pagesCount;
+	}
+}
 
+function handleZoom(inc) {
+	if (inc) {
+		pdfViewer.currentScale += 0.1;
+	} else {
+		pdfViewer.currentScale -= 0.1;
+	}
 }
 
 function showDialog(id) {
@@ -84,9 +107,9 @@ var getMeaning = function() {
 	}
 }
 
-var getCards = function(){
+var getCards = function() {
 	var fingerprint = PDFJS.currentFingerPrint;
-	window.location.href = 'flashcards.html#'+fingerprint;
+	window.location.href = 'flashcards.html#' + fingerprint;
 }
 
 $(function() {
@@ -116,11 +139,11 @@ var updateWord = function(word) {
 	var doc = localStorage.getItem(fingerprint) || '{}';
 	doc = JSON.parse(doc);
 	doc.fileName = PDFJS.pdfName;
-	doc.words = doc.words || {}; 
+	doc.words = doc.words || {};
 	if (doc.words.hasOwnProperty(word)) {
 		doc.words[word] += 1;
 	} else {
 		doc.words[word] = 1;
 	}
-	localStorage.setItem(fingerprint,JSON.stringify(doc));
+	localStorage.setItem(fingerprint, JSON.stringify(doc));
 }

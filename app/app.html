@@ -19,7 +19,7 @@
     <title>Logophile</title>
   </head>
   <body tabindex="1">
-    <div class="app-bar darcula" data-role="appbar">
+    <div class="app-bar darcula fixed-top" data-role="appbar">
       <a class="app-bar-element">
         <span id="toggle-tiles-dropdown2" class="mif-apps mif-2x"></span>
         <div class="app-bar-drop-container" data-role="dropdown" data-toggle-element="#toggle-tiles-dropdown2" data-no-close="false" style="width: 324px;">
@@ -50,7 +50,6 @@
       </a>
       <div class="app-bar-divider"></div>
       <ul class="app-bar-menu">
-        <li data-flexorderorigin="0" data-flexorder="1"><a onclick="handleLibrary()">Library</a></li>
         <li data-flexorderorigin="1" data-flexorder="2">
           <a href="" class="dropdown-toggle">Recent Books</a>
           <ul class="d-menu" data-role="dropdown">
@@ -63,14 +62,13 @@
         <div class="app-bar-element">
           <span class="dropdown-toggle">Goto</span>
           <ul class="d-menu" data-role="dropdown" style="display: none;">
-            <li><a onclick="gotoBookmark('1')">Cover</a></li>
-            <li><a onclick="gotoBookmark('1')">Table of Contents</a></li>
-            <li><a onclick="gotoBookmark('1')">beginning</a></li>
-            <li><a onclick="gotoBookmark('1')">Location Ctrl+G</a></li>
+            <li><a onclick="changePage(1)">Cover</a></li>
+            <li><a onclick="changePage('end')">Table of Contents</a></li>
+    <!--         <li><a onclick="gotoBookmark('1')">Location Ctrl+G</a></li> -->
           </ul>
         </div>
-        <div class="app-bar-divider"></div>
-        <li data-flexorderorigin="2" data-flexorder="3"><a onclick="handleFonts('1')">Aa</a></li>
+        <!-- <div class="app-bar-divider"></div>
+        <li data-flexorderorigin="2" data-flexorder="3"><a onclick="handleFonts('1')">Aa</a></li> -->
         <div class="app-bar-divider"></div>
         <li data-flexorderorigin="3" data-flexorder="4"><a onclick="handleFullscreen('1')"><span class="icon  mif-enlarge2"></span></a></li>
         <div class="app-bar-divider"></div>
@@ -108,9 +106,9 @@
               <span class="app-bar-divider"></span>
               <li><a onclick="changePage('next')">Next</a></li>
               <span class="app-bar-divider"></span>
-              <li><a onclick="changePage('next')">Zoom +</a></li>
+              <li><a onclick="handleZoom(1)">Zoom +</a></li>
               <span class="app-bar-divider"></span>
-              <li><a onclick="changePage('next')">Zoom -</a></li>
+              <li><a onclick="handleZoom(0)">Zoom -</a></li>
 
             </ul>
           </div>
