@@ -15,6 +15,9 @@
 
 'use strict';
 
+var path = require('path');
+
+
 if (!PDFJS.PDFViewer || !PDFJS.getDocument) {
   alert('Please build the library and components using\n' +
     '  `node make generic components`');
@@ -24,7 +27,7 @@ if (!PDFJS.PDFViewer || !PDFJS.getDocument) {
 var loadPDF = function(url) {
   PDFJS.getDocument(url).then(function(pdfDocument) {
     PDFJS.currentFingerPrint = pdfDocument.fingerprint;
-    PDFJS.pdfName = url;
+    updateRecent(path.basename(url), url);
     pdfViewer.setDocument(pdfDocument);
     pdfLinkService.setDocument(pdfDocument, null);
   });

@@ -43,10 +43,10 @@ function changePage(inc) {
 		$('html body').animate({
 			scrollTop: window.scrollY + $(window).height()
 		}, 200);
-	} else if(typeof inc === "number") {
+	} else if (typeof inc === "number") {
 		pdfViewer.currentPageNumber = inc;
-	} else if(inc == "end"){
-		pdfViewer.currentPageNumber =pdfViewer.pagesCount;
+	} else if (inc == "end") {
+		pdfViewer.currentPageNumber = pdfViewer.pagesCount;
 	}
 }
 
@@ -146,4 +146,25 @@ var updateWord = function(word) {
 		doc.words[word] = 1;
 	}
 	localStorage.setItem(fingerprint, JSON.stringify(doc));
+}
+
+var updateRecent = function(name, url) {
+	var books = localStorage.getItem("books") || '{}';
+	books = JSON.parse(books);
+	var date = Date.now();
+	var keys = Object.keys(books).sort();
+	if(keys.length >= 5){ //Hold history till only 5th book
+		delete books[keys[0]];
+	}
+	books[date] = {"name": name, "url": url};
+	updateRecentUI(books);
+	localStorage.setItem("books", JSON.stringify(books));
+}
+var updateRecentUI = function(books){
+	var keys = Object.keys(books).sort();
+	var str = '';
+	for (var i = keys.length - 1; i >= 0; i--) {
+		str += '<li><a onclick="loadPDF(\''+books[keys[i]].url+'\')">'+books[keys[i]].name+'</a></li>';
+	}
+	document.getElementById('recentBooks').innerHTML = str;
 }

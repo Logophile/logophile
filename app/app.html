@@ -52,11 +52,7 @@
       <ul class="app-bar-menu">
         <li data-flexorderorigin="1" data-flexorder="2">
           <a href="" class="dropdown-toggle">Recent Books</a>
-          <ul class="d-menu" data-role="dropdown">
-            <li><a onclick="openRecent('1')">The Powerhouse: Inside ..</a></li>
-            <li><a onclick="openRecent('2')">Superforecasting: The ..</a></li>
-            <li><a onclick="openRecent('3')">The Road to Character</a></li>
-            <li><a onclick="openRecent('4')">The Lost Art of Finding Our Way</a></li>
+          <ul class="d-menu" data-role="dropdown" id="recentBooks">
           </ul>
         </li>
         <div class="app-bar-element">
@@ -84,15 +80,13 @@
     <div class="cell colspan12 ">
     </div>
   </div>
-  <div class="flex-grid demo-grid">
-    <div class="row">
-      <div class="cell size2"></div>
+  <div class="flex-grid">
+    <div class="row" style="flex: 0 0 100.333333%;">
       <div class="cell size8">
         <div id="viewerContainer">
     <div id="viewer" class="pdfViewer"></div>
   </div>
       </div>
-      <div class="cell size2"></div>
     </div>
   </div>
   <div data-role="charm" data-position="bottom" id="bottomCharm">
