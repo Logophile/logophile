@@ -153,18 +153,27 @@ var updateRecent = function(name, url) {
 	books = JSON.parse(books);
 	var date = Date.now();
 	var keys = Object.keys(books).sort();
-	if(keys.length >= 5){ //Hold history till only 5th book
+	if (keys.length >= 5) { //Hold history till only 5th book
 		delete books[keys[0]];
 	}
-	books[date] = {"name": name, "url": url};
+	for (var i = keys[i].length - 1; i >= 0; i--) {
+		if (books[keys[i]].url == url) {
+			delete books[keys[i]];
+		}
+	}
+	books[date] = {
+		"name": name,
+		"url": url
+	};
+
 	updateRecentUI(books);
 	localStorage.setItem("books", JSON.stringify(books));
 }
-var updateRecentUI = function(books){
+var updateRecentUI = function(books) {
 	var keys = Object.keys(books).sort();
 	var str = '';
 	for (var i = keys.length - 1; i >= 0; i--) {
-		str += '<li><a onclick="loadPDF(\''+books[keys[i]].url+'\')">'+books[keys[i]].name+'</a></li>';
+		str += '<li><a onclick="loadPDF(\'' + books[keys[i]].url + '\')">' + books[keys[i]].name + '</a></li>';
 	}
 	document.getElementById('recentBooks').innerHTML = str;
 }
