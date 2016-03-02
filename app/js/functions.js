@@ -152,11 +152,11 @@ var updateRecent = function(name, url) {
 	var books = localStorage.getItem("books") || '{}';
 	books = JSON.parse(books);
 	var date = Date.now();
-	var keys = Object.keys(books).sort();
+	var keys = Object.keys(books).sort() || [];
 	if (keys.length >= 5) { //Hold history till only 5th book
 		delete books[keys[0]];
 	}
-	for (var i = keys[i].length - 1; i >= 0; i--) {
+	for (var i = keys.length - 1; i >= 0; i--) {
 		if (books[keys[i]].url == url) {
 			delete books[keys[i]];
 		}
