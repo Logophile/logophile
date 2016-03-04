@@ -51,3 +51,7 @@ app.on('ready', function () {
 app.on('window-all-closed', function () {
     app.quit();
 });
+
+app.on('before-quit', function(){
+    console.log('before quit');
+})

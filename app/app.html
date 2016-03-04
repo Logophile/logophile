@@ -5,17 +5,15 @@
     <link rel="stylesheet" href="bower_components/metro-dist/css/metro-icons.min.css">
     <link rel="stylesheet" href="bower_components/metro-dist/css/metro-responsive.min.css">
     <link rel="stylesheet" href="bower_components/metro-dist/css/metro-schemes.min.css">
-      <style>
+    <style>
     body {
-      background-color: #808080;
-      margin: 0;
-      padding: 0;
+    background-color: #808080;
+    margin: 0;
+    padding: 0;
     }
-
-  </style>
-   <link rel="stylesheet" href="pdf.js/build/components/pdf_viewer.css">
-   
-
+    </style>
+    <link rel="stylesheet" href="pdf.js/build/components/pdf_viewer.css">
+    
     <title>Logophile</title>
   </head>
   <body tabindex="1">
@@ -32,17 +30,17 @@
             </div>
             <div class="tile-small bg-black">
               <div class="tile-content iconic">
-                <span class="icon mif-first"></span>
+                <span class="icon mif-first" onclick="changePage('back')"></span>
               </div>
             </div>
             <div class="tile-small bg-black">
               <div class="tile-content iconic">
-                <span class="icon mif-last"></span>
+                <span class="icon mif-last" onclick="changePage('next')" ></span>
               </div>
             </div>
             <div class="tile-small bg-black">
               <div class="tile-content iconic">
-                <span class="icon mif-help"></span>
+                <span class="icon mif-help" ></span>
               </div>
             </div>
           </div>
@@ -60,7 +58,7 @@
           <ul class="d-menu" data-role="dropdown" style="display: none;">
             <li><a onclick="changePage(1)">Cover</a></li>
             <li><a onclick="changePage('end')">End</a></li>
-    <!--         <li><a onclick="gotoBookmark('1')">Location Ctrl+G</a></li> -->
+            <!--         <li><a onclick="gotoBookmark('1')">Location Ctrl+G</a></li> -->
           </ul>
         </div>
         <!-- <div class="app-bar-divider"></div>
@@ -81,50 +79,54 @@
     </div>
   </div>
   <div class="flex-grid">
-    <div class="row" style="flex: 0 0 100.333333%;">
+    <div class="row" style="align-items: center;justify-content: center;">
       <div class="cell size8">
         <div id="viewerContainer">
-    <div id="viewer" class="pdfViewer"></div>
-  </div>
+          <div id="viewer" class="pdfViewer"></div>
+        </div>
       </div>
     </div>
   </div>
-  <div data-role="charm" data-position="bottom" id="bottomCharm">
-    <div class="flex-grid demo-grid">
-      <div class="row">
-        <div class="cell size4"></div>
-        <div class="cell size4">
-          <div class="app-bar darcula">
-            <ul class="app-bar-menu">
-              <li><a onclick="changePage('back')">Back</a></li>
-              <span class="app-bar-divider"></span>
-              <li><a onclick="changePage('next')">Next</a></li>
-              <span class="app-bar-divider"></span>
-              <li><a onclick="handleZoom(1)">Zoom +</a></li>
-              <span class="app-bar-divider"></span>
-              <li><a onclick="handleZoom(0)">Zoom -</a></li>
-
-            </ul>
+  <div data-role="charm" data-position="bottom" id="bottomCharm" style="background: transparent;">
+    <div style="display: flex;align-items: center;justify-content: center;">
+        <div class="app-bar-drop-container" style="width: 324px; display: block;">
+          <div class="tile-container bg-white">
+            <div class="tile-small bg-black">
+              <div class="tile-content iconic">
+                <span class="icon mif-first" onclick="changePage('back')"></span>
+              </div>
+            </div>
+            <div class="tile-small bg-black">
+              <div class="tile-content iconic">
+                <span class="icon mif-last" onclick="changePage('next')" ></span>
+              </div>
+            </div>
+            <div class="tile-small bg-black">
+              <div class="tile-content iconic">
+                <span class="icon mif-zoom-in" onclick="handleZoom(1)"></span>
+              </div>
+            </div>
+            <div class="tile-small bg-black">
+              <div class="tile-content iconic">
+                <span class="icon mif-zoom-out" onclick="handleZoom(0)"></span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="cell size4"></div>
-      </div>
     </div>
   </div>
   <div data-role="dialog" id="dialog" data-close-button="true">
-     <p id="modalword"></p>
-</div>
+    <p id="modalword"></p>
+  </div>
 </body>
-
 <script>
-
 </script>
 <script src="js/jquery-2.1.3.min.js"></script>
-  <script src="pdf.js/build/components/compatibility.js"></script>
-  <script src="pdf.js/build/pdf.js"></script>
-  <script src="pdf.js/build/components/pdf_viewer.js"></script>
-  <script src="js/simpleviewer.js"></script>
-  <script src="js/functions.js"></script>
+<script src="pdf.js/build/components/compatibility.js"></script>
+<script src="pdf.js/build/pdf.js"></script>
+<script src="pdf.js/build/components/pdf_viewer.js"></script>
+<script src="js/simpleviewer.js"></script>
+<script src="js/functions.js"></script>
 <script src="bower_components/metro-dist/js/metro.min.js"></script>
 </html>
 </html>

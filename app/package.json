@@ -1,10 +1,10 @@
 {
-  "name": "Logophile",
-  "productName": "Logophile",
+  "name": "logophile",
+  "productName": "logophile",
   "identifier": "com.bhanu.logophile",
   "description": "Logophile is reader that works to improve your vocublary",
   "version": "0.0.1",
-  "author": "Bhanu Pratap Chaudhary",
+  "author": "Bhanu Pratap Chaudhary <bhanu423@gmail.com>",
   "copyright": "©2016, jutja",
   "main": "background.js",
   "dependencies": {

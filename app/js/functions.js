@@ -116,7 +116,7 @@ $(function() {
 	window.myWorker = new Worker("dict/worker.js");
 	var words = "";
 	myWorker.onmessage = function(e) {
-		if (e.data && e.data.task == "meaning") {
+		if (e.data && e.data.task == "meaning" && e.data.results ) {
 			updateWord(e.data.word);
 			words = e.data.results.definitions;
 			var str = '<table border="1"><tr><th>Word</th><th>Type</th><th>Meaning</th></tr>';
@@ -157,7 +157,7 @@ var updateRecent = function(name, url) {
 		delete books[keys[0]];
 	}
 	for (var i = keys.length - 1; i >= 0; i--) {
-		if (books[keys[i]].url == url) {
+		if (books[keys[i]] && books[keys[i]].url == url) {
 			delete books[keys[i]];
 		}
 	}

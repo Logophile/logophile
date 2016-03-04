@@ -80,16 +80,14 @@ var bundle = function (src, dest) {
 
 var bundleApplication = function () {
     return Q.all([
-        bundle(srcDir.path('background.js'), destDir.path('background.js')),
-        bundle(srcDir.path('app.js'), destDir.path('app.js')),
+        bundle(srcDir.path('background.js'), destDir.path('background.js'))
     ]);
 };
 
 var bundleSpecs = function () {
     generateSpecsImportFile().then(function (specEntryPointPath) {
         return Q.all([
-            bundle(srcDir.path('background.js'), destDir.path('background.js')),
-            bundle(specEntryPointPath, destDir.path('spec.js')),
+            bundle(srcDir.path('background.js'), destDir.path('background.js'))
         ]);
     });
 };
