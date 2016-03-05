@@ -23,7 +23,8 @@ function openRecent() {
 function handleFonts() {
 
 }
-function settings(){
+
+function settings() {
 	window.location = "settings.html";
 }
 
@@ -119,7 +120,7 @@ $(function() {
 	window.myWorker = new Worker("dict/worker.js");
 	var words = "";
 	myWorker.onmessage = function(e) {
-		if (e.data && e.data.task == "meaning" && e.data.results ) {
+		if (e.data && e.data.task == "meaning" && e.data.results) {
 			updateWord(e.data.word);
 			words = e.data.results.definitions;
 			var str = '<table border="1"><tr><th>Word</th><th>Type</th><th>Meaning</th></tr>';
@@ -152,6 +153,7 @@ var updateWord = function(word) {
 }
 
 var updateRecent = function(name, url) {
+	localStorage.setItem('lastopen', url);
 	var books = localStorage.getItem("books") || '{}';
 	books = JSON.parse(books);
 	var date = Date.now();

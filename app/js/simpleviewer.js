@@ -42,7 +42,7 @@ PDFJS.workerSrc = 'pdf.js/build/pdf.worker.js';
 // PDFJS.cMapUrl = '../../external/bcmaps/';
 // PDFJS.cMapPacked = true;
 
-var DEFAULT_URL = 'welcome.pdf';
+var DEFAULT_URL =  localStorage.getItem('lastopen') || 'welcome.pdf' ;
 
 var container = document.getElementById('viewerContainer');
 
