@@ -1,0 +1,45 @@
+<<!DOCTYPE html>
+<html>
+	<head>
+		<title>Settings</title>
+		<link rel="stylesheet" href="bower_components/metro-dist/css/metro.min.css">
+		<link rel="stylesheet" href="bower_components/metro-dist/css/metro-icons.min.css">
+		<link rel="stylesheet" href="bower_components/metro-dist/css/metro-responsive.min.css">
+		<link rel="stylesheet" href="bower_components/metro-dist/css/metro-schemes.min.css">
+	</head>
+	<body>
+		<div class="app-bar darcula fixed-top"> <a class="app-bar-element" href="app.html">Go Back</a></div><div style="padding-top: 48px;">
+		<div class="flex-grid">
+			<div class="row">
+				<div class="cell colspan1 "></div>
+				<div class="cell colspan10 ">
+					<ul class="step-list">
+						<li>
+							<h2 class="no-margin-top">Create a Backup</h2>
+							<hr class="bg-red">
+							<div>
+								Saves your flash cards and all other settings to any place of your choice. Kindly take a backup of configuration when updating.We are working to making it redundant.
+								<br>
+								<br>
+								<button class="button danger" onclick="saveDefault()">Save Backup</button>
+							</div>
+						</li>
+						<li>
+							<h2 class="no-margin-top">Load your Backup</h2>
+							<hr class="bg-green">
+							<div>
+								Setting up on a different system or just upgraded to find your flashcards missing.
+								<br>
+								<button class="button danger" onclick="loadDefault()">Load Backup</button>
+							</div>
+						</li>
+					</ul>
+					<div class="preloader-cycle dark-style" data-role="preloader" data-type="cycle" data-style="dark" style="margin: auto; display: none;" id="preloader"><div class="cycle"></div></div>
+				</div>
+				<div class="cell colspan1 "></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/setting.js"></script>
+</html>

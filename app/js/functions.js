@@ -23,6 +23,9 @@ function openRecent() {
 function handleFonts() {
 
 }
+function settings(){
+	window.location = "settings.html";
+}
 
 function handleFullscreen() {
 	if (document.webkitIsFullScreen) {
