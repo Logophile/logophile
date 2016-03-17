@@ -48,7 +48,7 @@ $(function() {
 	myWorker.onmessage = function(e) {
 		if (e.data && e.data.task == "meaning") {
 			words = e.data.results.definitions;
-			var str = '<table border="1"><tr><th>Word</th><th>Type</th><th>Meaning</th></tr>';
+			var str = '<table class="table" ><tr><th>Word</th><th>Type</th><th>Meaning</th></tr>';
 			for (var i = words.length - 1; i >= 0; i--) {
 				str += '<tr><td>' + e.data.word + '</td><td>' + words[i]['part_of_speech'] + '</td><td>' + words[i]['definition'] + '</td></tr>';
 			};

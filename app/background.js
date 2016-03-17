@@ -20,6 +20,7 @@ var mainWindowState = windowStateKeeper('main', {
 });
 
 app.on('ready', function () {
+    app.commandLine.appendSwitch('enable-speech-dispatcher');
 
     mainWindow = new BrowserWindow({
         x: mainWindowState.x,

@@ -123,13 +123,28 @@ $(function() {
 		if (e.data && e.data.task == "meaning" && e.data.results) {
 			updateWord(e.data.word);
 			words = e.data.results.definitions;
-			var str = '<table border="1"><tr><th>Word</th><th>Type</th><th>Meaning</th></tr>';
+			var str = '<p>Meaning of the word: ' + e.data.word+'</p><hr>';
+			var part1 = '<div class="tabcontrol" id="tab-control"><ul class="tabs">';
+			var part2 = '<div class="frames">';
+			var defn = {}
 			for (var i = words.length - 1; i >= 0; i--) {
-				str += '<tr><td>' + e.data.word + '</td><td>' + words[i]['part_of_speech'] + '</td><td>' + words[i]['definition'] + '</td></tr>';
+				if(!defn.hasOwnProperty(words[i]['part_of_speech'])){
+					defn[words[i]['part_of_speech']] = "";
+				}
+				defn[words[i]['part_of_speech']] += '<p>'+words[i]['definition']+'</p><hr class="thin">';
+				
+				// str += '<tr><td>' + e.data.word + '</td><td>' + words[i]['part_of_speech'] + '</td><td>' + words[i]['definition'] + '</td></tr>';
 			};
-			str += '</table>';
+			var keys = Object.keys(defn);
+			for (var i = keys.length - 1; i >= 0; i--) {
+				part1 += '<li><a href="#word'+i+'">'+keys[i]+'</a></li>';
+				part2 += '<div class="frame" id="word'+i+'">'+defn[keys[i]]+'</div>';
+			}
+
+			str += part1+'</ul>'+part2+'</div></div>';
 			document.getElementById('modalword').innerHTML = str;
 			showDialog('#dialog');
+			 $("#tab-control").tabcontrol();
 		} else {
 			var str = 'Word not found in dictionary';
 			document.getElementById('modalword').innerHTML = str;
@@ -166,10 +181,13 @@ var updateRecent = function(name, url) {
 			delete books[keys[i]];
 		}
 	}
-	books[date] = {
-		"name": name,
-		"url": url
-	};
+	if (name && url) {
+		books[date] = {
+			"name": name,
+			"url": url
+		};
+	}
+
 
 	updateRecentUI(books);
 	localStorage.setItem("books", JSON.stringify(books));

@@ -11,6 +11,12 @@
     margin: 0;
     padding: 0;
     }
+            #viewerContainer {
+      overflow: auto;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
     </style>
     <link rel="stylesheet" href="pdf.js/build/components/pdf_viewer.css">
     
@@ -115,7 +121,7 @@
         </div>
     </div>
   </div>
-  <div data-role="dialog" id="dialog" data-close-button="true">
+  <div data-role="dialog" id="dialog" data-close-button="true" padding: 5px;>
     <p id="modalword"></p>
   </div>
 </body>

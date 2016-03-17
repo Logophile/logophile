@@ -156,6 +156,11 @@ The installer is built using [NSIS](http://nsis.sourceforge.net). You have to in
 
 There are still a lot of 32-bit Windows installations in use. If you want to support those systems and have 64-bit OS make sure you've installed 32-bit (instead of 64-bit) Node version. There are [versions managers](https://github.com/coreybutler/nvm-windows) if you feel the need for both architectures on the same machine.
 
+Credits: 
+Sound Icon->
+Icon made by [http://www.flaticon.com/authors/plainicon](plainicon) from www.flaticon.com 
+
+
 # License
 
 The MIT License (MIT)
@@ -179,6 +184,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 Errors :
 error while loading shared libraries: libgtk-x11-2.0.so.0: cannot open shared object file: No such file or directory
 sudo apt-get install libgtk2.0-0:i386

@@ -12,23 +12,23 @@
 																		<div class="main">
 																						<h3 class="name">{{word}}</h3>
 																						<p class="profession">{{count}}</p>
-																						<p class="profession"> <a onclick='speak.play("{{word}}")'>Hear Pronunciation</a></p>
+																						<p class="profession"> <a onclick='speak.play("{{word}}")'><img src="img/ear-with-sound-bar.svg" style="height: 55px;cursor: pointer;"/></a></p>
 																		</div>
 																		<div class="footer">
-																						<button class="btn btn-simple" onclick='rotateCard(this,"{{word}}")'>
+																						<button class="btn btn-default" onclick='rotateCard(this,"{{word}}")'>
 																						<i class="fa fa-mail-forward"></i> See the Meaning
 																						</button>
 																		</div>
 														</div>
 					</div> <!-- end front panel -->
-					<div class="back">
+					<div class="back" style="overflow-y: scroll;">
 						<div class="content">
 							<div class="main" id="{{word}}">
 								
 							</div>
 						</div>
 						<div class="footer">
-							<button data-original-title="Flip Card" class="btn btn-simple" rel="tooltip" title="" onclick="rotateCard(this)">
+							<button data-original-title="Flip Card" class="btn btn-default" rel="tooltip" title="" onclick="rotateCard(this)" style="position: relative;left: 190px;top: -15px;">
 							<i class="fa fa-reply"></i> Back
 							</button>
 						</div>

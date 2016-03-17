@@ -22,6 +22,7 @@ var paths = {
         './bower_components/**',
         './css/**',
         './js/**',
+        './img /**',
         './dict/**',
         './source/**',
         './welcome.pdf',
