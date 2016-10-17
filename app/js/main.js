@@ -102,8 +102,8 @@ function renderPage(page) {
 
 loadPdf("welcome.pdf");
 
-const remote = require('electron').remote;
-const dialog = remote.require('dialog');
+const {dialog} = require('electron').remote;
+// const dialog = remote.require('dialog');
 
 
 function openFile() {

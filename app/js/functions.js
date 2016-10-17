@@ -1,5 +1,7 @@
-const remote = require('electron').remote;
-const dialog = remote.require('dialog');
+const {remote} = require('electron')
+
+const {dialog,Menu, MenuItem} = remote;
+// const dialog = remote.require('dialog');
 
 
 function openFile() {
@@ -79,8 +81,7 @@ $(function() {
 	showCharm('#bottomCharm');
 })
 
-const Menu = remote.Menu;
-const MenuItem = remote.MenuItem;
+
 var menu = new Menu();
 menu.append(new MenuItem({
 	label: 'GetMeaning',

@@ -27,7 +27,7 @@ if (!PDFJS.PDFViewer || !PDFJS.getDocument) {
 var loadPDF = function(url) {
   PDFJS.getDocument(url).then(function(pdfDocument) {
     PDFJS.currentFingerPrint = pdfDocument.fingerprint;
-    updateRecent(path.basename(url), url);
+    // updateRecent(path.basename(url), url);
     pdfViewer.setDocument(pdfDocument);
     pdfLinkService.setDocument(pdfDocument, null);
   });
