@@ -30,6 +30,7 @@ var loadPDF = function(url) {
     // updateRecent(path.basename(url), url);
     pdfViewer.setDocument(pdfDocument);
     pdfLinkService.setDocument(pdfDocument, null);
+    showCharm('#bottomCharm');
   });
 }
 
