@@ -1,24 +1,52 @@
-name: Code Review
-
-permissions:
-  contents: read
-  pull-requests: write
+name: Bugster PR Create
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+  issues:
+    types: [labeled]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
-  test:
-    if: ${{ contains(github.event.*.labels.*.name, 'bugster-review') }} # Optional; to run only when a label is attached
+  bugster:
+    if: ${{ (github.event_name == 'issues' && 
+             contains( github.event.label.name, 'bugster')) || 
+            (github.event_name == 'issue_comment' && 
+             github.event.issue.pull_request &&
+             contains( github.event.comment.body, 'Hey bugster')) }}
     runs-on: ubuntu-latest
     steps:
-      - name: bugster
-        uses: docker://ghcr.io/bugster-ai/bugster-pr-review:latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BUGSTER_API_KEY: ${{ secrets.BUGSTER_API_KEY }}
-          top_p: 1
-          temperature: 1
-          max_tokens: 10000
-          MAX_PATCH_LENGTH: 10000 # if the patch/diff length is large than MAX_PATCH_LENGTH, will be ignored and won't review. By default, with no MAX_PATCH_LENGTH set, there is also no limit for the patch/diff length.
+    - name: Install jq
+      run: sudo apt-get install jq
+    - name: Check if label was added by a collaborator
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        is_collaborator=$(curl -s -H "Authorization: token $GITHUB_TOKEN " -H "Accept: application/vnd.github+json" \
+          "https://api.github.com/repos/${{ github.repository }}/collaborators/${{ github.event.sender.login }}" | jq -r '.message')
+
+        if [ "$is_collaborator" == "Not Found" ]; then
+          echo "Label not added by a collaborator. Skipping action."
+          exit 78
+        fi
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: main
+        fetch-depth: 1
+    - name: Bugster
+      uses: docker://ghcr.io/bugster-ai/bugster-pr-workflow:latest
+      env:
+        BUGSTER_API_KEY: ${{ secrets.BUGSTER_API_KEY }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        base_branch: main
+        model: gpt-4
+        context_limit: 8192
+        min_tokens: 1000
+        max_tokens: 2000
+        num_reasks: 2
