@@ -36,7 +36,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        ref: main
         fetch-depth: 1
     - name: Bugster
       uses: docker://ghcr.io/bugster-ai/bugster-pr-workflow:latest
