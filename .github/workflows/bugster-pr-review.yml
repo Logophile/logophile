@@ -1,4 +1,4 @@
-name: Code Review
+name: Bugster Code Review
 
 permissions:
   contents: read
