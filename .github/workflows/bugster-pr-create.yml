@@ -43,7 +43,6 @@ jobs:
         BUGSTER_API_KEY: ${{ secrets.BUGSTER_API_KEY }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        base_branch: main
         model: gpt-4
         context_limit: 8192
         min_tokens: 1000
