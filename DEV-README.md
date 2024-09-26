@@ -1,7 +1,14 @@
-electron-boilerplate
-==============
-
 [![Build Status](https://travis-ci.org/szwacz/electron-boilerplate.svg?branch=master)](https://travis-ci.org/szwacz/electron-boilerplate) [![Build status](https://ci.appveyor.com/api/projects/status/s9htc1k5ojkn08fr?svg=true)](https://ci.appveyor.com/project/szwacz/electron-boilerplate)
+
+## Logophile - Dev Docs
+
+### A Truly Cross Platform Book Reader Built for Humans. 
+
+[LogoPhile](https://github.com/Logophile/logophile) is a book reader built for an avid book reader. It is not a typical pdf viewer but highly optimized for reading books.
+
+Logophile uses Electron.io to build our app on OSX, Windows, and Linux. Below you will find information from their starter template.
+
+## logophile-electron-boilerplate
 
 Minimalistic yet comprehensive boilerplate application for [Electron runtime](http://electron.atom.io). Tested on OSX, Windows and Linux.  
 
